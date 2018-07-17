@@ -16,13 +16,15 @@ let myOptions = {
 };
 let callBackFunc = (entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            let dataAttr = entry.target.firstElementChild.getAttribute('data-src');
-            if (dataAttr !== null) {
-                entry.target.firstElementChild.setAttribute('src', dataAttr);
-                entry.target.firstElementChild.removeAttribute('data-src');
-            }
-        }
+        console.log(entry);
+        
+        // if (entry.isIntersecting) {
+        //     let dataAttr = entry.target.firstElementChild.getAttribute('data-src');
+        //     if (dataAttr !== null) {
+        //         entry.target.firstElementChild.setAttribute('src', dataAttr);
+        //         entry.target.firstElementChild.removeAttribute('data-src');
+        //     }
+        // }
     });
 }
 let observer = new IntersectionObserver(callBackFunc, myOptions);
