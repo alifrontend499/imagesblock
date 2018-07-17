@@ -6,11 +6,17 @@
 //             $(this).removeAttr('data-src');
 //         }
 //     });
-// })
+// }) 
 
-const observer = new IntersectionObserver((entries, options) => {
+
+let myOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0
+};
+let callBackFunc = (entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting == true) {
+        if (entry.isIntersecting) {
             let dataAttr = entry.target.firstElementChild.getAttribute('data-src');
             if (dataAttr !== null) {
                 entry.target.firstElementChild.setAttribute('src', dataAttr);
@@ -18,11 +24,11 @@ const observer = new IntersectionObserver((entries, options) => {
             }
         }
     });
-
-});
+}
+let observer = new IntersectionObserver(callBackFunc, myOptions);
 
 let items = document.querySelectorAll('.flex > .inner');
+
 items.forEach((item) => {
     observer.observe(item);
 });
-
